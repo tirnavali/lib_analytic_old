@@ -36,6 +36,20 @@
   <%=form.label :date %><br/>
   <%=form.date_field :date %><br/>
 </p>
+
+<%= form.fields_for :acquisition_analytics do |analytics| %>
+<div style="border: 2px solid red">
+  <p>
+    <%= analytics.label :pub_arrived_as_supply%><br/>
+    <%= analytics.number_field :pub_arrived_as_supply%>
+  </p>
+  <p>
+    <%= analytics.label :pub_arrived_as_gift%><br/>
+    <%= analytics.number_field :pub_arrived_as_gift%>
+  </p>
+</div>
+<% end %>
+
 <p>
   <%=form.submit %><br/>
 </p>

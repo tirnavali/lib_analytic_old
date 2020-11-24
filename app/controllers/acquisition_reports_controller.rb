@@ -1,6 +1,7 @@
 class AcquisitionReportsController < ApplicationController
     def new
       @acquisition_report = AcquisitionReport.new
+      3.times { @acquisition_report.acquisition_analytics.build }
     end
 
     def edit
