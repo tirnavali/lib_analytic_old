@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_24_130632) do
+ActiveRecord::Schema.define(version: 2020_11_24_164503) do
+
+  create_table "acquisition_analytics", force: :cascade do |t|
+    t.integer "acquisition_report_id", null: false
+    t.integer "pub_arrived_as_supply"
+    t.integer "pub_arrived_as_gift"
+    t.integer "pub_bought"
+    t.integer "pub_saved_as_supply"
+    t.integer "pub_saved_as_gift"
+    t.integer "pub_saved_as_old"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["acquisition_report_id"], name: "index_acquisition_analytics_on_acquisition_report_id"
+  end
 
   create_table "acquisition_reports", force: :cascade do |t|
     t.string "reporter_identity"
@@ -23,4 +36,5 @@ ActiveRecord::Schema.define(version: 2020_11_24_130632) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "acquisition_analytics", "acquisition_reports"
 end
