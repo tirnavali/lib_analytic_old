@@ -5,7 +5,7 @@ class AcquisitionReportsController < ApplicationController
     end
 
     def edit
-      @acquisition_report = AcquisitionReport.find(params[:id])
+      @acquisition_report = AcquisitionReport.find(params[:id])     
     end
 
     def create
@@ -31,6 +31,7 @@ class AcquisitionReportsController < ApplicationController
 
     def destroy
       @acquisition_report = AcquisitionReport.find(params[:id])
+      #@acquisition_report.acquisition_analytics.destroy
       @acquisition_report.destroy
       redirect_to acquisition_reports_path
     end
@@ -45,6 +46,7 @@ class AcquisitionReportsController < ApplicationController
 
     private
       def acquisition_report_params
-        params.require(:acquisition_report).permit(:reporter_identity, :job_title, :posted_books, :refactored_items, :note, :date)
+        params.require(:acquisition_report).permit(:reporter_identity, :job_title, :posted_books, :refactored_items, :note, :date, 
+          acquisition_analytics_attributes: [:id, :pub_arrived_as_supply, :pub_arrived_as_gift])
       end
 end
