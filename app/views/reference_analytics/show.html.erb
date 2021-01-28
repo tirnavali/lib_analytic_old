@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Reporter:</strong>
+  <%= @reference_analytic.reporter %>
+</p>
+
+<p>
+  <strong>Report date:</strong>
+  <%= @reference_analytic.report_date %>
+</p>
+
+<p>
+  <strong>User from out:</strong>
+  <%= @reference_analytic.user_from_out %>
+</p>
+
+<p>
+  <strong>User from inside:</strong>
+  <%= @reference_analytic.user_from_inside %>
+</p>
+
+<%= link_to 'Edit', edit_reference_analytic_path(@reference_analytic) %> |
+<%= link_to 'Back', reference_analytics_path %>

@@ -1,0 +1,2 @@
+class JournalDocAnalytic < ApplicationRecord
+end

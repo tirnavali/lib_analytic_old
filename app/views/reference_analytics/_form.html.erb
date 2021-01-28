@@ -1,0 +1,37 @@
+<%= form_with(model: reference_analytic, local: true) do |form| %>
+  <% if reference_analytic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(reference_analytic.errors.count, "error") %> prohibited this reference_analytic from being saved:</h2>
+
+      <ul>
+        <% reference_analytic.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :reporter %>
+    <%= form.text_field :reporter %>
+  </div>
+
+  <div class="field">
+    <%= form.label :report_date %>
+    <%= form.date_field :report_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_from_out %>
+    <%= form.number_field :user_from_out %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_from_inside %>
+    <%= form.number_field :user_from_inside %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
