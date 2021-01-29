@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_28_210237) do
+ActiveRecord::Schema.define(version: 2021_01_29_204526) do
 
   create_table "acquisition_analytics", force: :cascade do |t|
     t.integer "acquisition_report_id", null: false
@@ -22,7 +22,9 @@ ActiveRecord::Schema.define(version: 2021_01_28_210237) do
     t.integer "pub_saved_as_old"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "pub_type_id"
     t.index ["acquisition_report_id"], name: "index_acquisition_analytics_on_acquisition_report_id"
+    t.index ["pub_type_id"], name: "index_acquisition_analytics_on_pub_type_id"
   end
 
   create_table "acquisition_reports", force: :cascade do |t|
@@ -47,6 +49,12 @@ ActiveRecord::Schema.define(version: 2021_01_28_210237) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "pub_types", force: :cascade do |t|
+    t.string "pub_type_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "reference_analytics", force: :cascade do |t|
     t.string "reporter"
     t.date "report_date"
@@ -57,4 +65,5 @@ ActiveRecord::Schema.define(version: 2021_01_28_210237) do
   end
 
   add_foreign_key "acquisition_analytics", "acquisition_reports"
+  add_foreign_key "acquisition_analytics", "pub_types"
 end
