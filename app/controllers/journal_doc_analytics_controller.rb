@@ -69,6 +69,6 @@ class JournalDocAnalyticsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def journal_doc_analytic_params
-      params.require(:journal_doc_analytic).permit(:reporter, :report_date, :new_record, :updated_record, :new_author, :new_subject)
+      params.require(:journal_doc_analytic).permit(:reporter, :report_date, :new_entry, :updated_entry, :new_author, :new_subject)
     end
 end
