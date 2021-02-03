@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :journal_doc_reports
   resources :personels
   resources :journal_doc_analytics
   resources :reference_analytics

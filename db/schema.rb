@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_03_125328) do
+ActiveRecord::Schema.define(version: 2021_02_03_210139) do
 
   create_table "acquisition_analytics", force: :cascade do |t|
     t.integer "acquisition_report_id", null: false
@@ -51,6 +51,20 @@ ActiveRecord::Schema.define(version: 2021_02_03_125328) do
     t.index ["personel_id"], name: "index_journal_doc_analytics_on_personel_id"
   end
 
+  create_table "journal_doc_reports", force: :cascade do |t|
+    t.integer "journal_count"
+    t.integer "document_count"
+    t.integer "unique_subjects_given"
+    t.integer "unique_author_given"
+    t.integer "author_given"
+    t.integer "journal_doc_analytic_id"
+    t.string "reporter"
+    t.date "report_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["journal_doc_analytic_id"], name: "index_journal_doc_reports_on_journal_doc_analytic_id"
+  end
+
   create_table "personels", force: :cascade do |t|
     t.string "name"
     t.string "surname"
@@ -76,4 +90,5 @@ ActiveRecord::Schema.define(version: 2021_02_03_125328) do
   add_foreign_key "acquisition_analytics", "acquisition_reports"
   add_foreign_key "acquisition_analytics", "pub_types"
   add_foreign_key "journal_doc_analytics", "personels"
+  add_foreign_key "journal_doc_reports", "journal_doc_analytics"
 end
