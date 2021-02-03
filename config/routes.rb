@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :personels
   resources :journal_doc_analytics
   resources :reference_analytics
   get '/', to: 'welcome#index'
