@@ -49,7 +49,6 @@ ActiveRecord::Schema.define(version: 2021_02_03_125328) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "personel_id"
     t.index ["personel_id"], name: "index_journal_doc_analytics_on_personel_id"
-#TODO add personel_id to crud pages
   end
 
   create_table "personels", force: :cascade do |t|
