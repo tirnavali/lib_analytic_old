@@ -4,7 +4,11 @@ class PersonelsController < ApplicationController
   # GET /personels
   # GET /personels.json
   def index
-    @personels = Personel.all
+    unless ["asc", "desc"].one? params[:order]
+      params[:order] = "asc"
+    end
+    @personels = Personel.all.order(name: params[:order])
+    @personel = Personel.new
   end
 
   # GET /personels/1
@@ -28,8 +32,9 @@ class PersonelsController < ApplicationController
 
     respond_to do |format|
       if @personel.save
-        format.html { redirect_to @personel, notice: 'Personel was successfully created.' }
-        format.json { render :show, status: :created, location: @personel }
+        format.html { redirect_to @personels, notice: 'Personel was successfully created.' }
+        format.js
+        format.json { render :index, status: :created, location: @personel }
       else
         format.html { render :new }
         format.json { render json: @personel.errors, status: :unprocessable_entity }

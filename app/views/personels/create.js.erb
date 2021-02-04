@@ -1,0 +1,15 @@
+var personels = document.querySelector("#personels");
+personels.insertAdjacentHTML("beforeend", "<%= j render(@personel) %>");
+
+var personel_name = document.querySelector("#personel_name");
+personel_name.value = ""
+
+var personel_surname = document.querySelector("#personel_surname");
+personel_surname.value = ""
+
+var notice = document.querySelector("#notice");
+notice.innerText = "Personel was successfully created."
+
+setTimeout(function(){
+  notice.innerText = "";
+}, 2500);

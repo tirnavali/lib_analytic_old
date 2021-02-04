@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= render 'form', personel: @personel %>
 <h1>Personels</h1>
-
 <table>
   <thead>
     <tr>
@@ -11,19 +11,9 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @personels.each do |personel| %>
-      <tr>
-        <td><%= personel.name %></td>
-        <td><%= personel.surname %></td>
-        <td><%= link_to 'Show', personel %></td>
-        <td><%= link_to 'Edit', edit_personel_path(personel) %></td>
-        <td><%= link_to 'Destroy', personel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<tbody id="personels">
+<%= render @personels %>
+</tbody>
 <br>
-
-<%= link_to 'New Personel', new_personel_path %>
+<%= link_to 'ORDER', personels_path(order: :asc) %>
+<%= link_to 'ORDER desc', personels_path(order: :desc) %>
